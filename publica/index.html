@@ -218,14 +218,14 @@
     document.getElementById('sendEvent').addEventListener('click', function() {
             const eventData = {
                 eventName: "Sample Event",
-                eventId: "evt123",
+                eventId: "evt1234",
                 eventPhotoUrl: "http://example.com/photo.jpg",
                 eventLocation: "New York",
                 eventDescription: "This is a sample event description.",
                 active: true
             };
 
-            fetch('/api/events', {
+            fetch('/api/create-event', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
