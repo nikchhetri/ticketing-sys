@@ -217,15 +217,25 @@
     
     document.getElementById('sendEvent').addEventListener('click', function() {
             const eventData = {
-                eventName: "Sample Event",
-                eventId: "evt1234",
+                eventName: "bishab christain ceremony",
+                eventId: "weddmony",
                 eventPhotoUrl: "http://example.com/photo.jpg",
-                eventLocation: "New York",
+                eventLocation: "Starkville",
                 eventDescription: "This is a sample event description.",
-                active: true
+                active: true,
+                numOfTickets: 2000,
+                ticketTypes: [{
+                  description: "Adult",
+                  price: 10.99,
+                  ticketTypeId: 1
+                }, {
+                  description: "Kids",
+                  price: 5.99,
+                  ticketTypeId: 2
+                }]
             };
 
-            fetch('/api/create-event', {
+            fetch('/api/events/create-event', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -243,6 +253,9 @@
 
 
   </script>
+  <script>
+    
 
+  </script>
 </body>
 </html>

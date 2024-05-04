@@ -111,6 +111,7 @@
           <div class="intro-text">
             <div class="heading-jumbo">About Us<br></div>
             <div class="paragraph-bigger cc-bigger-light">Distributing Nepalease Movies in United States.<br></div>
+            <div class="getQRButton"></div>
           </div>
         </div>
       </div>
@@ -193,5 +194,33 @@
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6632e6061613df5d09ca261c" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="js/webflow.js" type="text/javascript"></script>
+  <script>
+    async function downloadTicket() {
+        const ticketId = "105ec78c6ea36367ddebba4b5a7b2fbc7b2bf7b3e22e5e65e8aa205a9382ef53"
+
+        const url = `api/tickets/get-ticket/${ticketId}`;
+
+        await fetch(url)
+            .then(response => response.blob()) // Convert the response to a Blob
+            .then(blob => {
+                // Create a new URL pointing to the blob object
+                const href = URL.createObjectURL(blob);
+                // Create a temporary <a> element to trigger download
+                const a = document.createElement('a');
+                a.href = href;
+                a.download = `${ticketId}.jpg`; // Set the file name for the download
+                document.body.appendChild(a); // Append the <a> element to the document
+                a.click(); // Programmatically click the <a> to trigger the download
+                document.body.removeChild(a); // Clean up and remove the <a> element
+                URL.revokeObjectURL(href); // Clean up the URL object
+            })
+            .catch(err => {
+                console.error('Error downloading the file:', err);
+                alert('Failed to download the file. Please check the console for more information.');
+            });
+    }
+
+  </script>
 </body>
 </html>
+

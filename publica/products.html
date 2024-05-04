@@ -235,7 +235,7 @@
 
   
         function fetchEvents() {
-            fetch('/api/active-events')
+            fetch('/api/events/get-active-events')
             .then(response => response.json())
             .then(events => {
               console.log(events);  
