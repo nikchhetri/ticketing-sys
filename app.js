@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const eventRouter = require('./routes/eventRoutes');
 const ticketRouter = require('./routes/ticketRoutes');
+const purchaseRouter = require('./routes/purchaseRoutes');
 function createApp() {
     const app = express();
 
@@ -11,7 +12,7 @@ function createApp() {
     
     app.use('/api/events', eventRouter);
     app.use('/api/tickets', ticketRouter)
-    
+    app.use('/api/purchase', purchaseRouter)
 
     return app;
 }

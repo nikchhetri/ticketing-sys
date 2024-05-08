@@ -20,7 +20,6 @@ async function createEvent (a) {
             ticketTypeId: 1
         }]
     }
-    console.log(a.ticketTypes)
     const newEvent = new Event({
         eventName: a.eventName,
         eventId: a.eventId,

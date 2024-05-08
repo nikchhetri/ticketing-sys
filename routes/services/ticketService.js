@@ -13,7 +13,7 @@ async function createTicket(ticketData) {
         if(!event){
             throw new Error('No Associated Event')
         }
-        if(event.ticket_types.ticketTypeId != ticketTypeId){
+        if(!event.ticketTypes.some(ticketType => ticketType.ticketTypeId == ticketTypeId)){
             throw new Error('ticketType does not match')
         }
         
@@ -21,20 +21,20 @@ async function createTicket(ticketData) {
         // if(!purchase) {
         //     throw new Error('Purchase not found');
         // }
-
-        const ticketId = encodeData(stripeTransactionId);
+        const date = new Date().toISOString()
+        console.log('date is :', date);
+        const ticketId = encodeData(date + stripeTransactionId);
         const newTicket = new Ticket({
             ticketId,
             stripeTransactionId,
             email,
             phone,
-            adult,
+            ticketTypeId,
             eventId,
             purchaseId
         });
 
         const savedTicket = await newTicket.save();
-        console.log('Ticket created successfully:', savedTicket);
         
         event.numberOfSales = event.numberOfSales + 1;
         await event.save();

@@ -4,7 +4,7 @@ const secret = process.env.ENCSTR
 
 function encodeData(data) {
     const hash = crypto.createHmac('sha256', secret)
-                       .update(data.toString())
+                       .update(data)
                        .digest('hex');
     return hash;
 }

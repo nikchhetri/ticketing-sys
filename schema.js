@@ -41,9 +41,9 @@ const ticketSchema = new mongoose.Schema({
   stripeTransactionId: { type: String, required: true },
   email: { type: String, required: true },
   phone: { type: String, required: true },
-  ticketTypeId: {type: Number, require: true},
-  eventId: {type: String, require: true},
-  purchaseId: {type: String, require: true}
+  ticketTypeId: {type: Number, required: true},
+  eventId: {type: String, required: true},
+  purchaseId: {type: String, required: false}
 });
 
 // Model creation

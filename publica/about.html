@@ -220,6 +220,40 @@
             });
     }
 
+    async function createPurchase() {
+      const purchaseData = {
+        purchaseEmail: "example@example.com",
+        phoneNumber: "+1234567890",
+        firstName: "John",
+        lastName: "Doe",
+        stripePayload: {
+            transactionId: "txn_123456789",
+            transactionDate: "2023-10-01"
+        },
+        eventId: "weddmony",
+        numberOfTickets: 5,
+        purchaseTicketTypes: [
+            { ticketTypeId: 1, quantity: 3 },
+            { ticketTypeId: 2, quantity: 2 }
+        ]
+      };
+
+      fetch('/api/purchase/create-purchase', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(purchaseData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+
   </script>
 </body>
 </html>
